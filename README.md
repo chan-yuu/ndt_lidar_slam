@@ -1,7 +1,10 @@
 lidarslam_ros2
 ====
-![foxy](https://github.com/rsasaki0109/lidarslam_ros2/workflows/foxy/badge.svg)  
-![humble](https://github.com/rsasaki0109/lidarslam_ros2/workflows/humble/badge.svg)  
+需要安装的lib库:
+g2o,版本为:202012
+
+
+
 ros2 slam package of the frontend using OpenMP-boosted gicp/ndt scan matching and the backend using graph-based slam. 
 
 mobile robot mapping  
