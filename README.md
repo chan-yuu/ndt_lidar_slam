@@ -27,16 +27,13 @@ I found that even a four-core laptop with 16GB of memory could work in outdoor e
 ## requirement to build
 You need  [ndt_omp_ros2](https://github.com/rsasaki0109/ndt_omp_ros2) for scan-matcher
 
-clone
-(If you forget to add the --recursive option when you do a git clone, run `git submodule update --init --recursive` in the lidarslam_ros2 directory)
 ```
-cd ~/ros2_ws/src
-git clone --recursive https://github.com/rsasaki0109/lidarslam_ros2
+git clone https://github.com/chan-yuu/ndt_lidar_slam.git
 ```
 build
 ```
 cd ~/ros2_ws
-colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+colcon build
 ```
 
 ## io
@@ -122,63 +119,8 @@ ros2 service call /map_save std_srvs/Empty
 |num_adjacent_pose_cnstraints|int|5|the number of constraints between successive nodes in a pose graph over time|
 |use_save_map_in_loop|bool|true|Whether to save the map when loop close(If the map saving process in loop close is too heavy and the self-position estimation fails, set this to `false`.)|
 
-## demo
-### trial environment
-demo data(ROS1) is `hdl_400.bag` in [hdl_graph_slam](https://github.com/koide3/hdl_graph_slam)  
-The Velodyne VLP-32 was used in this data.  
-To use rosbag in ROS1, use [rosbag2_bag_v2](https://github.com/ros2/rosbag2_bag_v2)  
-```
-rviz2 -d src/lidarslam_ros2/lidarslam/rviz/mapping.rviz 
-```
+## run
 
 ```
 ros2 launch lidarslam lidarslam.launch.py
 ```
-
-```
-ros2 bag play -s rosbag_v2 hdl_400.bag 
-```
-
-<img src="./lidarslam/images/path.png" width="640px">
-
-Green: path with loopclosure, Yellow: path without loopclosure
-
-<img src="./lidarslam/images/map.png" width="640px">
-
-### The larger environment
-
-demo data(ROS1) by Autoware Foundation  
-https://data.tier4.jp/rosbag_details/?id=212  
-The Velodyne VLP-16 was used in this data.
-
-
-```
-rviz2 -d src/lidarslam_ros2/lidarslam/rviz/mapping_tukuba.rviz 
-```
-
-```
-ros2 launch lidarslam lidarslam_tukuba.launch.py
-```
-
-```
-ros2 bag play -s rosbag_v2 tc_2017-10-15-15-34-02_free_download.bag 
-```
-
-<img src="./lidarslam/images/path_tukuba.png" width="640px">  
-
-Green: path  
-
-<img src="./lidarslam/images/map_tukuba.png" width="640px">  
-
-Red and yellow: map
-
-## Used Libraries 
-
-- Eigen
-- PCL(BSD3)
-- g2o(BSD2 except a part)
-- [ndt_omp](https://github.com/koide3/ndt_omp) (BSD2)
-
-## Related packages 
-
-- [li_slam_ros2](https://github.com/rsasaki0109/li_slam_ros2) (BSD2)
