@@ -1,8 +1,9 @@
 lidarslam_ros2
 ====
 需要安装的lib库:
-g2o,版本为:202012
+g2o,版本为:20201223
 
+https://github.com/RainerKuemmerle/g2o/tree/20201223_git
 
 
 ros2 slam package of the frontend using OpenMP-boosted gicp/ndt scan matching and the backend using graph-based slam. 
