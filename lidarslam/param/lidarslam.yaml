@@ -1,6 +1,6 @@
 scan_matcher:
   ros__parameters:
-    global_frame_id: "map"
+    global_frame_id: "odom"
     robot_frame_id: "base_link"
     registration_method: "NDT"
     ndt_resolution: 2.0
